@@ -1,0 +1,25 @@
+image: node:8.10.0
+
+pipelines:
+  branches:
+    raksha:
+      - step:
+          name: install and test
+          caches:
+            - node
+          script:
+            - npm i npm@latest
+            - npm i
+            - npm test
+            - echo "Installation success"
+
+    master:
+      - step:
+          name: Initial
+          caches:
+            - node
+          script:
+            - npm i npm@latest
+            - npm i
+            - npm test
+            - echo "Installation success"

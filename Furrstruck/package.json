@@ -1,0 +1,34 @@
+{
+  "name": "furrstruck",
+  "version": "0.0.1",
+  "description": "E-commerce for pet products",
+  "main": "server.js",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.2",
+    "bunyan": "^1.8.12",
+    "chai-http": "^4.2.1",
+    "cloudinary": "^1.13.2",
+    "cors": "^2.8.4",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.1",
+    "method-override": "^2.3.10",
+    "mongoclient": "^1.0.3",
+    "mongoose": "^5.0.4",
+    "mongoose-paginate": "^5.0.3",
+    "morgan": "^1.9.1",
+    "multer": "^1.3.0",
+    "swagger": "^0.7.5"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": " mocha ./test1.js --timeout 80000 --exit",
+    "start": "node server.js"
+  },
+  "author": "raksha panchal",
+  "license": "ISC"
+}
