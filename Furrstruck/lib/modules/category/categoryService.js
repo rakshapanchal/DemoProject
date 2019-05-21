@@ -2,7 +2,6 @@
 const categoryDao = require('./categoryDao')
 const categoryMapper = require('./categoryMapper')
 const jwthandler = require("../../jwtHandler")
-const productDao = require('../product/productDao')
 const types = require('./categoryConstants').types
 const categoryMsg = require('./categoryConstants').messages
 const status = require('../../constants').STATUS
@@ -114,20 +113,18 @@ function updateCatgryStatus(req, res) {
             // for update category/subCategory  status 
             return categoryDao.updateCategory(result._id, result).then((data) => {
                 // for update related product status
-                productDao.updatePrductStatus(data._id, data.status, adminId, data.type).then((result1) => {
-                    /**check type of data(category/subCategory) */
-                    if (data.type == types.category) {
-                        // for update subcategory status
-                        return categoryDao.updateSubCategory(data._id, data.status, adminId).then((data1) => {
-                            if (data1) {
-                                //for updated success message
-                                return categoryMapper.updateCategryRes(data, categoryMsg.updated)
-                            } else {
-                                return categoryMapper.dataNotFound()
-                            }
-                        })
-                    }
-                })
+                /**check type of data(category/subCategory) */
+                if (data.type == types.category) {
+                    // for update subcategory status
+                    return categoryDao.updateSubCategory(data._id, data.status, adminId).then((data1) => {
+                        if (data1) {
+                            //for updated success message
+                            return categoryMapper.updateCategryRes(data, categoryMsg.updated)
+                        } else {
+                            return categoryMapper.dataNotFound()
+                        }
+                    })
+                }
                 return categoryMapper.updateCategryRes(data, categoryMsg.updated)
             })
         }
